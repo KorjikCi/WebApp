@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Add Note";
+}
+<h1>Добавить заметку</h1>
+
+<form method="post" action="@Url.Action("AddNote")" enctype="multipart/form-data">
+    <div class="form-group row mb-3">
+        <label class="col-md-3 col-form-label">
+            Тема заметки
+        </label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" name="title" required="">
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-md-3 col-form-label">
+            Текст заметки
+        </label>
+        <div class="col-md-9">
+            <textarea name="text" cols="130"></textarea>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <input type="submit" class="btn btn-default" value="Добавить заметку"/>
+    </div>
+</form>

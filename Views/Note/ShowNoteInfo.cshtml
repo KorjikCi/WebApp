@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Show note";
+}
+<!-- Для того чтобы rider мог давать нам подсказки в интеллисенсе, нам надо указать тип данных Model -->
+@model Note 
+
+<!-- 
+Чтобы обрабатывать действия пользователя мы должны создавать форму, и указывать в них какой метод вызывать при нажатии кнопки
+Метод UpdateNote(string title, string text, int noteId) принимает такие парметры и в форме должны быть параметры которые имеет такие же названия
+-->
+<form method="post" action="@Url.Action("UpdateNote")" enctype="multipart/form-data">
+    <div class="form-group row mb-3">
+        <label class="col-md-3 col-form-label">
+            Тема заметки
+        </label>
+        <div class="col-md-9">
+            <!-- name="title" говорит о том, что это парметер title -->
+            <input type="text" class="form-control" name="title" value="@Model.Title" required="">
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-md-3 col-form-label">
+            Текст заметки
+        </label>
+        <div class="col-md-9">
+            <!-- name="text" говорит о том, что это парметер text -->
+            <textarea name="text" cols="130">@Model.Text</textarea>
+        </div>
+    </div>
+    <!-- При нажатии на эту кнопку будет вызван метод UpdateNote -->
+    <div class="col-md-9">
+        <input type="submit" class="btn btn-default" value="Редактировать заметку"/>
+    </div>
+    <!-- name="noteId" говорит о том, что это парметер noteId -->
+    <input hidden type="text" name="noteId" value="@Model.Id"/>
+</form>
+<form method="post" action="@Url.Action("DeleteNote")" enctype="multipart/form-data">
+    <div class="col-md-9">
+        <input type="submit" class="btn btn-default" value="Удалить заметку"/>
+    </div>
+    <input hidden type="text" name="noteId" value="@Model.Id"/>
+</form>

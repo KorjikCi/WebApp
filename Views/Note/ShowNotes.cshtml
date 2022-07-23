@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Show notes";
+}
+@model List<Note>
+<h1>Все заметки</h1>
+
+@{
+    foreach (var note in Model)
+    {
+        var url = Url.Action("ShowNoteInfo", new { noteId = note.Id });
+        <div class="media-body ml-4">
+            <a href="@url" class="name h6 mb-0 text-sm">@note.Title</a>
+        </div>
+    }
+}
